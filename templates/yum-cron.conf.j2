@@ -1,0 +1,24 @@
+[commands]
+{% for k, v in yum_cron_conf.commands.items() %}
+{{ k }} = {{ v }}
+{% endfor %}
+
+[emitters]
+{% for k, v in yum_cron_conf.emitters.items() %}
+{{ k }} = {{ v }}
+{% endfor %}
+
+[email]
+{% for k, v in yum_cron_conf.email.items() %}
+{{ k }} = {{ v }}
+{% endfor %}
+
+[groups]
+{% for k, v in yum_cron_conf.groups.items() %}
+{{ k }} = {{ v }}
+{% endfor %}
+
+[base]
+{% for k, v in yum_cron_conf.base.items() %}
+{{ k }} = {{ v }}
+{% endfor %}

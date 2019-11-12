@@ -1,0 +1,20 @@
+---
+- name: Install yum-cron
+  yum:
+    name: yum-cron
+    state: present
+
+- name: Update yum_cron_conf with any overrides
+  set_fact:
+    yum_cron_conf: "{{ yum_cron_conf | combine( yum_cron_conf_custom, recursive=True)}}"
+
+- name: Configure yum-cron
+  template:
+    src: "yum-cron.conf.j2"
+    dest: "/etc/yum/yum-cron.conf"
+
+- name: Enable/start yum-cron
+  service:
+    name: yum-cron
+    state: "{{ yum_cron_service_state }}"
+    enabled: "{{ yum_cron_service_enabled }}"
