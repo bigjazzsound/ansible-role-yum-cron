@@ -21,6 +21,6 @@ provisioner:
     options:
       x: ["403"]
 verifier:
-  name: goss
+  name: testinfra
   lint:
-    name: yamllint
+    name: flake8
