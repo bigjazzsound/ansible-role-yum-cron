@@ -6,7 +6,7 @@
 
 - name: Update yum_cron_conf with any overrides
   set_fact:
-    yum_cron_conf: "{{ yum_cron_conf | combine( yum_cron_conf_custom, recursive=True)}}"
+    yum_cron_conf: "{{ yum_cron_conf | combine( yum_cron_conf_custom, recursive=True) }}"
 
 - name: Configure yum-cron
   template:

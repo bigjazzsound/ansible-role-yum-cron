@@ -1,5 +1,5 @@
 ---
-yum_cron_service_enabled: True
+yum_cron_service_enabled: true
 yum_cron_service_state: started
 
 yum_cron_conf:
