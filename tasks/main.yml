@@ -6,14 +6,14 @@
 
 - name: Update yum_cron_conf with any overrides
   set_fact:
-    yum_cron_conf: "{{ yum_cron_conf | combine( yum_cron_conf_custom, recursive=True) }}"
+    yum_cron_conf: "{{ yum_cron_conf | combine(yum_cron_conf_custom, recursive=True) }}"
 
-- name: Configure yum-cron
+- name: Manage yum-cron.conf
   template:
     src: "yum-cron.conf.j2"
     dest: "/etc/yum/yum-cron.conf"
 
-- name: Enable/start yum-cron
+- name: "{{ yum_cron_service_enabled | ternary('Enable', 'Disable') }} yum-cron"
   service:
     name: yum-cron
     state: "{{ yum_cron_service_state }}"

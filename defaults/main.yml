@@ -9,21 +9,17 @@ yum_cron_conf:
     download_updates: "yes"
     apply_updates: "no"
     random_sleep: "360"
-
   emitters:
     system_name: "None"
     emit_via: "stdio"
     output_width: "80"
-
   email:
     email_from: "root@localhost"
     email_to: "root"
     email_host: "localhost"
-
   groups:
     group_list: "None"
     group_package_types: "mandatory, default"
-
   base:
     debuglevel: "-2"
     skip_broken: "False"
