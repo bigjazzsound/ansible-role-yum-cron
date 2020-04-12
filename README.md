@@ -1,40 +1,66 @@
-Role Name
+ansible-role-yum-cron
 =========
 
-A brief description of the role goes here.
+A role to manage the yum-cron service.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should
-be mentioned here. For instance, if the role uses the EC2 module, it may be a
-good idea to mention in this section that the boto package is required.
+None
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including
-any variables that are in defaults/main.yml, vars/main.yml, and any variables
-that can/should be set via parameters to the role. Any variables that are read
-from other roles and/or the global scope (ie. hostvars, group vars, etc.) should
-be mentioned here as well.
+```
+yum_cron_service_enabled: true
+yum_cron_service_state: started
+```
+
+Manage the state of the yum-cron service.
+
+```
+yum_cron_conf:
+  commands:
+    update_cmd: "default"
+    update_messages: "yes"
+    download_updates: "yes"
+    apply_updates: "no"
+    random_sleep: "360"
+  emitters:
+    system_name: "None"
+    emit_via: "stdio"
+    output_width: "80"
+  email:
+    email_from: "root@localhost"
+    email_to: "root"
+    email_host: "localhost"
+  groups:
+    group_list: "None"
+    group_package_types: "mandatory, default"
+  base:
+    debuglevel: "-2"
+    skip_broken: "False"
+    mdpolicy: "group:main"
+    assumeyes: "False"
+
+yum_cron_conf_custom: {}
+```
+
+A dictionary representation of the yum-cron.conf file. **The default values are the same as when you install the yum-cron package.** You can use your own configuration by setting `yum_cron_conf` or modify the default configuration by adding any override values to the `yum_cron_conf_custom` dictionary.
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in
-regards to parameters that may need to be set for other roles, or variables that
-are used from other roles.
+None
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables
-passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: ansible-role-yum-cron, x: 42 }
+```
+- hosts: all
+  roles:
+     - role: ansible-role-yum-cron
+```
 
 License
 -------
@@ -44,5 +70,5 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a
-website (HTML is not allowed).
+[Github](https://github.com/bigjazzsound)  
+[Email](craigjamesfielder@gmail.com)  
